@@ -17,6 +17,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\test\resources\SampleFileHeader.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\test\resources\SampleFileHeaderAndDelimiter.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

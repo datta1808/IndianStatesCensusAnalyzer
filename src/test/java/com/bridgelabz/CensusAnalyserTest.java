@@ -14,6 +14,7 @@ public class CensusAnalyserTest {
 
     // India State Code Information
     private static final String STATE_CODE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCode.csv";
+    private static final String WRONG_STATE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
 
     CensusAnalyser censusAnalyser = new CensusAnalyser();
 
@@ -73,6 +74,15 @@ public class CensusAnalyserTest {
     public void given_IndianStateCodeCSVFile_ReturnsCorrectRecords() throws CensusAnalyserException {
         int numOfRecords = censusAnalyser.loadIndiaStateCode(STATE_CODE_CSV_FILE_PATH);
         Assert.assertEquals(37, numOfRecords);
+    }
+
+    @Test
+    public void givenIndiaStateCodeData_WithWrongFile_ShouldThrowException() {
+        try {
+            censusAnalyser.loadIndiaStateCode(WRONG_STATE_CSV_FILE_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
     }
 }
 

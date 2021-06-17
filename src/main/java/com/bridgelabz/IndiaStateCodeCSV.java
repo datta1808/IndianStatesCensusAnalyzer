@@ -3,18 +3,24 @@ package com.bridgelabz;
 import com.opencsv.bean.CsvBindByName;
 
 public class IndiaStateCodeCSV {
+    @CsvBindByName(column = "SrNo")
+    private String srNo;
 
-    @CsvBindByName(column = "State", required = true)
-    public String stateName;
+    @CsvBindByName(column = "State Name")
+    private String state;
 
-    @CsvBindByName(column = "Population", required = true)
-    public int stateCode;
+    @CsvBindByName(column = "TIN")
+    private String tin;
+
+    @CsvBindByName(column = "StateCode", required = true)
+    private String stateCode;
+
 
     @Override
     public String toString() {
-        return "IndiaStateCodeCSV{" +
-                "stateName='" + stateName + '\'' +
-                ", stateCode=" + stateCode +
-                '}';
+        return "srNo = " + srNo +
+                ", state = " + state +
+                ", tin = " + tin +
+                ", stateCode = " + stateCode;
     }
 }

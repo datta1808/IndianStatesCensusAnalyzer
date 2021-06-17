@@ -17,6 +17,7 @@ public class CensusAnalyserTest {
     private static final String WRONG_STATE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
     private static final String WRONG_STATE_CSV_TYPE = "./src/test/resources/IndiaStateCode.txt";
     private static final String SAMPLE_STATE_CODE_DELIMITER = "./src/test/resources/SampleStateCodeDelimiter.txt";
+    private static final String SAMPLE_STATE_CODE_HEADER = "./src/test/resources/SampleStateCodeHeader.csv";
 
     CensusAnalyser censusAnalyser = new CensusAnalyser();
 
@@ -103,11 +104,23 @@ public class CensusAnalyserTest {
         }
     }
 
+
     @Test
     public void givenIndiaStateCodeData_WhenDelimiterIncorrect_ShouldThrowException() {
         try {
-            censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_DELIMITERS);
+            censusAnalyser.loadIndiaStateCode(SAMPLE_STATE_CODE_DELIMITER);
         } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE, e.type);
+        }
+    }
+
+
+    @Test
+    public void givenIndiaStateCodeData_WhenHeaderIncorrect_ShouldThrowException() {
+        try {
+            censusAnalyser.loadIndiaStateCode(SAMPLE_STATE_CODE_HEADER);
+        } catch (CensusAnalyserException e){
             e.printStackTrace();
             Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE, e.type);
         }

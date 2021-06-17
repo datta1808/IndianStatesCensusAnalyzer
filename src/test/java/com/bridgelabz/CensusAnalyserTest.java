@@ -36,7 +36,7 @@ public class CensusAnalyserTest {
             censusAnalyser.loadIndiaCensusData(WRONG_CSV_TYPE);
         } catch (CensusAnalyserException e){
             e.printStackTrace();
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE, e.type);
         }
     }
 
@@ -46,16 +46,17 @@ public class CensusAnalyserTest {
         try {
             censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_DELIMITERS);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE, e.type);
         }
     }
+
 
     @Test
     public void givenIndiaCensusData_WhenHeaderIncorrect_ShouldThrowException() {
         try {
             censusAnalyser.loadIndiaCensusData(SAMPLE_CSV_HEADER);
         } catch (CensusAnalyserException e){
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.UNABLE_TO_PARSE, e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.NOT_A_CSV_TYPE, e.type);
         }
     }
 }
